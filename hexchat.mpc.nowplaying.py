@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import re
 
 __module_name__ = 'MPC Now Playing'
-__module_version__ = '0.5'
+__module_version__ = '0.7'
 __module_description__ = 'MPC-BE/HC Now Playing script'
 
 
@@ -39,9 +39,9 @@ def now_playing(word, word_eol, userdata):
 	# Take the text found on the page and run it through regex to grab the info	
 	line = re.search('(MPC.*?)\s(.*?)\s.*?\s(.*?)\s.*?\s(.*?)\s.?(.*?(GB|MB))', nowplaying)
 	if len(word) > 1 and (word[1] == 'v' or word[1] == 'full'):
-		hexchat.command('SAY Now Playing in MPC-BE: {3} @ {4}'.format(line.group(0), line.group(1), line.group(2), line.group(3), line.group(4)))
+		hexchat.command('SAY Now Playing in {1} : {3} @ {4} [{5}]'.format(line.group(0), line.group(1), line.group(2), line.group(3), line.group(4), line.group(5)))
 	else:
-		hexchat.command('SAY Now Playing in MPC-BE: '+line.group(2))
+		hexchat.command('SAY Now Playing in {1} : {3} '.format(line.group(0), line.group(1), line.group(2), line.group(3), line.group(4), line.group(5)))
 	return hexchat.EAT_ALL
 	
 def unload_callback(userdata):
