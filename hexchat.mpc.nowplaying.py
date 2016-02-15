@@ -3,6 +3,7 @@
 # This script should work with any Media Player Classic alternative that has a web interface, although I don't guarantee the formatting.
 # Author Sengoku Nadeko
 # Date 14/02/16
+# Updated 15/02/16
 
 import hexchat
 import requests
@@ -10,7 +11,7 @@ from bs4 import BeautifulSoup
 import re
 
 __module_name__ = 'MPC Now Playing'
-__module_version__ = '0.8'
+__module_version__ = '0.9'
 __module_description__ = 'MPC-BE/HC Now Playing script'
 
 
@@ -37,7 +38,7 @@ def now_playing(word, word_eol, userdata):
 	nowplaying = soup.p.string
 	
 	# Take the text found on the page and run it through regex to grab the info	
-	line = re.search('(MPC.*?)\s(.*?)\s•\s(.*?)\s•\s(.*?)\s.?(.*?(GB|MB))', nowplaying)
+	line = re.search('(MPC.*?)\s(.*?)\s•\s(.*?)\s•\s(.*?)\s•\s(.*?(GB|MB))', nowplaying)
 	if len(word) > 1 and (word[1] == 'v' or word[1] == 'full'):
 		hexchat.command('SAY Now Playing in {1} : {3} @ {4} [{5}]'.format(line.group(0), line.group(1), line.group(2), line.group(3), line.group(4), line.group(5)))
 	else:
