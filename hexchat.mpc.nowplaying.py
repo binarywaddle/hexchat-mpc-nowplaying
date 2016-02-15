@@ -37,7 +37,7 @@ def now_playing(word, word_eol, userdata):
 	nowplaying = soup.p.string
 	
 	# Take the text found on the page and run it through regex to grab the info	
-	line = re.search('(MPC.*?)\s(.*?)\s.*?\s(.*?)\s.*?\s(.*?)\s.?(.*?(GB|MB))', nowplaying)
+	line = re.search('(MPC.*?)\s(.*?)\s•\s(.*?)\s•\s(.*?)\s.?(.*?(GB|MB))', nowplaying)
 	if len(word) > 1 and (word[1] == 'v' or word[1] == 'full'):
 		hexchat.command('SAY Now Playing in {1} : {3} @ {4} [{5}]'.format(line.group(0), line.group(1), line.group(2), line.group(3), line.group(4), line.group(5)))
 	else:
