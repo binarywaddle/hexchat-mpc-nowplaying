@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import re
 
 __module_name__ = 'MPC Now Playing'
-__module_version__ = '0.7'
+__module_version__ = '0.8'
 __module_description__ = 'MPC-BE/HC Now Playing script'
 
 
