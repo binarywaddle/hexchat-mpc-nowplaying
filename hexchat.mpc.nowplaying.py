@@ -3,7 +3,7 @@
 # This script should work with any Media Player Classic alternative that has a web interface, although I don't guarantee the formatting.
 # Author Sengoku Nadeko
 # Date 14/02/16
-# Updated 15/02/16
+# Updated 15/03/14
 
 import hexchat
 import requests
@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import re
 
 __module_name__ = 'MPC Now Playing'
-__module_version__ = '0.9'
+__module_version__ = '0.9.1'
 __module_description__ = 'MPC-BE/HC Now Playing script'
 
 
@@ -24,10 +24,13 @@ def now_playing(word, word_eol, userdata):
 		r = requests.get(url)
 
 	# Get the body of the page
-		html_content = r.text
-	
+		content = r.text
+
+	# Convert text to CP1252 encoding since that's what the MPC Web interface reports
+		convert = content.encode('cp1252').decode('utf-8')
+		
 	# Convert the html content into a beautiful soup object
-		soup = BeautifulSoup(html_content, "html5lib")
+		soup = BeautifulSoup(convert, "html5lib")
 
 	# If no web interface then MPC isn't running
 	except:
@@ -38,7 +41,7 @@ def now_playing(word, word_eol, userdata):
 	nowplaying = soup.p.string
 	
 	# Take the text found on the page and run it through regex to grab the info	
-	line = re.search('(MPC.*?)\s(.*?)\s•\s(.*?)\s•\s(.*?)\s•\s(.*?(GB|MB))', nowplaying)
+	line = re.search('(MPC.*?)\s(.*?)\s•\s(.*?)\s•\s(.*?)\s•\s(.*?(GB|MB))', nowplaying, flags=re.UNICODE)
 	if len(word) > 1 and (word[1] == 'v' or word[1] == 'full'):
 		hexchat.command('SAY Now Playing in {1} : {3} @ {4} [{5}]'.format(line.group(0), line.group(1), line.group(2), line.group(3), line.group(4), line.group(5)))
 	else:
