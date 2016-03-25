@@ -9,5 +9,8 @@ Requirements:
 
 * request for Python
 
+* html5lib
+
+
 
 I'm not providing any support for this really, I'm just putting this up here for others to benefit from. I use MPC-BE and the built in plugin for Hexchat doesn't work with it so I decided to see what I could do.
