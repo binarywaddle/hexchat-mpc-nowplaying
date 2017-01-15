@@ -3,7 +3,7 @@
 # This script should work with any Media Player Classic alternative that has a web interface, although I don't guarantee the formatting.
 # Author Sengoku Nadeko
 # Date 14/02/16
-# Updated 15/03/14
+# Updated 15/03/16
 
 import hexchat
 import requests
