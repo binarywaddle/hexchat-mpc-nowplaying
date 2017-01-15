@@ -1,5 +1,5 @@
 # hexchat-mpc-nowplaying
-Python script for Hexchat to show the currently playing media for MPC-HC and variations such as MPC-BE that don't work with the built in plugin as long as they provide a web interface.
+Python script for Hexchat to show the currently playing media for MPC-HC and variations such as MPC-BE that don't work with the built in plugin as long as they provide a web interface. Typing ``/np`` will show the file name of what you're watching while typing ``/np full`` will show additional info.
 
 Requirements:
 
