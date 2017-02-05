@@ -17,4 +17,6 @@ Additional requrirements via pip
 
 Install the above requirements using pip. An example would be open up an administrator command prompt, type ``pip install beautifulsoup4``
 
+Check under Options -> Web Interface, listen on port and allow localhost only.
+
 I'm not providing any support for this really, I'm just putting this up here for others to benefit from. I use MPC-BE and the built in plugin for Hexchat doesn't work with it so I decided to see what I could do.
